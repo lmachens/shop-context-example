@@ -1,8 +1,9 @@
-import React, { useContext } from 'react';
-import { CartContext } from '../../contexts/CartContext';
+import React from 'react';
+import { useTotalPrice } from '../../contexts/CartContext';
 
 function Cart(): JSX.Element {
-  const { totalPrice } = useContext(CartContext);
+  const totalPrice = useTotalPrice();
+
   return <div>Cart: {totalPrice.toFixed(2)}€</div>;
 }
 

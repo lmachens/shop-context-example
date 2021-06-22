@@ -1,13 +1,12 @@
 import React from 'react';
-import { useContext } from 'react';
-import { CartContext } from '../../contexts/CartContext';
+import { useBuy } from '../../contexts/CartContext';
 
 type ItemProps = {
   name: string;
   price: number;
 };
 function Item({ name, price }: ItemProps): JSX.Element {
-  const { buy } = useContext(CartContext);
+  const buy = useBuy();
 
   return (
     <article onClick={() => buy(price)}>
