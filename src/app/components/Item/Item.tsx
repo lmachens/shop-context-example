@@ -1,13 +1,16 @@
 import React from 'react';
+import { useContext } from 'react';
+import { CartContext } from '../../contexts/CartContext';
 
 type ItemProps = {
   name: string;
   price: number;
-  onClick: (price: number) => void;
 };
-function Item({ name, price, onClick }: ItemProps): JSX.Element {
+function Item({ name, price }: ItemProps): JSX.Element {
+  const { buy } = useContext(CartContext);
+
   return (
-    <article onClick={() => onClick(price)}>
+    <article onClick={() => buy(price)}>
       {name}: {price.toFixed(2)}€
     </article>
   );

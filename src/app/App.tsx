@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import AppHeader from './components/AppHeader/AppHeader';
 import Cart from './components/Cart/Cart';
 import Shop from './components/Shop/Shop';
+import { CartContext } from './contexts/CartContext';
 
 function App(): JSX.Element {
   const [totalPrice, setTotalPrice] = useState(0);
@@ -11,12 +12,19 @@ function App(): JSX.Element {
   }
 
   return (
-    <div>
-      <AppHeader>
-        <Cart totalPrice={totalPrice} />
-      </AppHeader>
-      <Shop onItemBuy={buy} />
-    </div>
+    <CartContext.Provider
+      value={{
+        totalPrice,
+        buy,
+      }}
+    >
+      <div>
+        <AppHeader>
+          <Cart />
+        </AppHeader>
+        <Shop />
+      </div>
+    </CartContext.Provider>
   );
 }
 

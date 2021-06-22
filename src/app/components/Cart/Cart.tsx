@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { CartContext } from '../../contexts/CartContext';
 
-type CartProps = {
-  totalPrice: number;
-};
-function Cart({ totalPrice }: CartProps): JSX.Element {
-  return <div>Cart: {totalPrice.toFixed(2)}</div>;
+function Cart(): JSX.Element {
+  const { totalPrice } = useContext(CartContext);
+  return <div>Cart: {totalPrice.toFixed(2)}€</div>;
 }
 
 export default Cart;
