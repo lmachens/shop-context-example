@@ -6,7 +6,7 @@ type CartContextValue = {
 };
 export const CartContext = React.createContext<CartContextValue>({
   totalPrice: 0,
-  buy: () => false,
+  buy: () => undefined,
 });
 
 type CartContextProviderProps = {
